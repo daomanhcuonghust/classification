@@ -52,7 +52,7 @@ for idx, img in enumerate(os.listdir(PATH_kinh_di)):
     if idx in hask_keys_kinh_di.values():
         original = os.path.join(PATH_kinh_di,img)
         extension = img.split('.')[-1]
-        target = os.path.join(PATH_DATA,f'kinh_di_{idx_kinh_di}.{extension}')
+        target = os.path.join(PATH_DATA,'kinh_di_{}.{}'.format(idx_kinh_di, extension))
         shutil.move(original, target)
         
         idx_kinh_di += 1
@@ -64,7 +64,7 @@ for idx, img in enumerate(os.listdir(PATH_tai_nan)):
     if idx in hask_keys_tai_nan.values():
         original = os.path.join(PATH_tai_nan,img)
         extension = img.split('.')[-1]
-        target = os.path.join(PATH_DATA,f'tai_nan_{idx_tai_nan}.{extension}')
+        target = os.path.join(PATH_DATA,'tai_nan_{}.{}'.format(idx_tai_nan, extension))
         shutil.move(original, target)
 
         idx_tai_nan += 1
