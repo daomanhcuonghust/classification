@@ -28,6 +28,10 @@ def make_parser():
                         help="choose fineturning or feature_extract", 
                         default=False, 
                         type=bool)
+    parser.add_argument("--path_log", 
+                        help="choose path to log checkpoint", 
+                        default='./log/resnet.pt', 
+                        type=str)
 
     return parser
 
@@ -70,7 +74,6 @@ if __name__ == "__main__":
         for name,param in model_ft.named_parameters():
             if param.requires_grad == True:
                 print("\t",name)
-    import pdb;pdb.set_trace()
 
     # Observe that all parameters are being optimized
     optimizer_ft = optim.Adam(params_to_update, lr=config["lr"])
@@ -79,14 +82,14 @@ if __name__ == "__main__":
     criterion = torch.nn.CrossEntropyLoss()
 
     # Train and evaluate
-    # model_ft, hist = train_model(model_ft, 
-    #                             dataloaders_dict, 
-    #                             criterion, 
-    #                             optimizer_ft, 
-    #                             num_epochs=config['num_epochs'], 
-    #                             is_inception=(config['model']=="inception"),
-    #                             device=device,
-    #                             path='./log/checkpoint.pt')
+    model_ft, hist = train_model(model_ft, 
+                                dataloaders_dict, 
+                                criterion, 
+                                optimizer_ft, 
+                                num_epochs=config['num_epochs'], 
+                                is_inception=(config['model']=="inception"),
+                                device=device,
+                                path=config['path_log'])
 
 
     

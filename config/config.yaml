@@ -3,3 +3,4 @@ lr: 0.0001
 batch_size: 32
 num_epochs: 50
 feature_extract: False
+path_log: './log/checkpoint.pt'
